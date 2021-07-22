@@ -2,7 +2,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const { uuid } = require('uuidv4');
+const { v4: uuidv4 } = require('uuid');
 const db = require('./db.json');
 
 const app = express();
@@ -32,14 +32,14 @@ app.post("/api/notes", (req, res) => {
 app.delete("/api/notes/:id", (req, res) => {
     const removeIndex = db.findIndex(note => note.id === req.params.id);
     db.splice(removeIndex, 1);
-    fs.writeFile("db/db.json", JSON.stringify(db), (err) => {
+    fs.writeFile("./db.json", JSON.stringify(db), (err) => {
         if (err) throw err;
     })
     res.send(db)
 })
 
-app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, '/notes.html')));
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/index.html')));
+app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, './public/notes.html')));
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, './public/index.html')));
 
 app.listen(PORT, () => {
     console.log(`Listening at ${PORT}`);
