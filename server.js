@@ -16,7 +16,7 @@
 // THEN the new note I have entered is saved and appears in the left-hand column with the other existing notes
 // app.post(), fs.writefile() (MAKE FUNCTION), UUID (PACKAGE)
 
-// WHEN I click on an existing note in the list in the left-hand column
+// WHEN I click on an existing note in the list in the left-hcdand column
 // THEN that note appears in the right-hand column
 // app.get()? 
 
@@ -52,7 +52,7 @@ app.post("/api/notes", (req, res) => {
     let newNote = req.body;
     newNote.id = uuidv4();
     db.push(newNote);
-    fs.writeFileSync("./db/db.json", JSON.stringify(db), (err) => {
+    fs.writeFileSync("./db.json", JSON.stringify(db), (err) => {
         if (err) throw err;
     });
     res.send(db)
@@ -66,8 +66,8 @@ app.delete("/api/notes/:id", (req, res) => {
     res.send(db)
 })
 
-app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, '/public/notes.html')));
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/public/index.html')));
+app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, '/notes.html')));
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/index.html')));
 
 app.listen(PORT, () => {
     console.log(`Listening at ${PORT}`);
