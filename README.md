@@ -1,7 +1,7 @@
 # Note Taker
 
 ## Purpose of Assignment:
-The purposr of this assingment was to modify starter code and create an application called that can be used to write, save, and delete notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
+The purpose of this assingment was to modify starter code and create an application called that can be used to write, save, and delete notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
 
 
 ## How To Use:
